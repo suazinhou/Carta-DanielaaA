@@ -27,39 +27,33 @@ body{
 .screen{ display:none; justify-content:center; align-items:center; min-height:100vh; flex-direction:column; padding:20px; }
 .active{ display:flex; }
 
-/* Teclado y display */
 .keypad{ display:grid; grid-template-columns:repeat(3,70px); gap:12px; margin-top:20px; }
 .key{ border:none; background:white; font-size:20px; padding:15px; border-radius:15px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.2s; }
 .key:hover{ background:#ffd1e6; transform:scale(1.05); }
 .input-display{ font-size:28px; letter-spacing:10px; margin-top:20px; font-family:'Segoe UI',sans-serif; color:var(--accent); border:2px solid var(--accent); border-radius:12px; padding:10px 15px; display:inline-block; min-width:50px; text-align:center; }
 
-/* Mensaje */
 #passwordMessage{ font-family: 'Segoe UI', 'Segoe Script', cursive; font-size: 16px; color: #ff4da6; text-align: center; margin-top: 15px; font-style: italic; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
 
-/* Carta y botones */
 .carta{ background:white; width:90%; max-width:700px; padding:30px; border-radius:25px; box-shadow:0 10px 30px rgba(0,0,0,0.2); text-align:left; }
 h1{ color:var(--accent); text-align:center; }
 h3{ text-align:center; margin-top:-10px; }
 #btnCarta, #btnFechas, .btnVolver{ margin-top:20px; border:none; background:white; font-size:24px; padding:20px 40px; border-radius:15px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.2s; margin-right:10px; }
 #btnCarta:hover, #btnFechas:hover, .btnVolver:hover{ background:#ffd1e6; transform:scale(1.05); }
 
-/* Contador */
 .contador-container{ display:flex; justify-content:center; gap:20px; margin-top:20px; }
 .contador-item{ display:flex; flex-direction:column; align-items:center; }
 .etiqueta{ margin-top:8px; font-size:16px; color:var(--accent); font-weight:bold; }
 
-/* Fechas especiales */
 .fechas-container{ display:flex; flex-direction:column; align-items:center; margin-top:20px; gap:15px; }
 .fechas-flex{ display:flex; align-items:center; gap:10px; justify-content:center; }
 
-/* Carrusel */
 .carrusel-container { position: relative; width: 100%; overflow: hidden; margin: 20px 0; }
 .carrusel { display: flex; gap: 10px; transition: transform 0.4s ease; }
 .carrusel .foto-container { min-width: 200px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; }
 .carrusel img {
-  width: 200px;          /* ancho fijo */
-  height: 200px;         /* altura fija */
-  object-fit: cover;     /* recorta si es necesario, sin deformar */
+  width: 200px;          
+  height: 200px;         
+  object-fit: cover;     
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   cursor: pointer;
@@ -73,7 +67,6 @@ h3{ text-align:center; margin-top:-10px; }
 .flecha-left { left: 5px; }
 .flecha-right { right: 5px; }
 
-/* Corazones y confeti */
 .heart{ position:fixed; bottom:-20px; font-size:20px; animation:floatUp linear infinite; opacity:0.8; pointer-events:none; }
 @keyframes floatUp{ from{ transform:translateY(0) rotate(0deg); opacity:0.8; } to{ transform:translateY(-110vh) rotate(360deg); opacity:0; } }
 .confetti{ position: fixed; width: 10px; height: 10px; border-radius: 50%; pointer-events: none; z-index: 999; animation: confettiFall linear forwards; }
@@ -138,7 +131,6 @@ h3{ text-align:center; margin-top:-10px; }
       <div class="fechas-flex"><div class="input-display">💞</div><div class="input-display">21</div><div class="etiqueta">Enero 2026 - Cuarto Mes de Novios</div></div>
       <div class="fechas-flex"><div class="input-display">⏳</div><div class="input-display">21</div><div class="etiqueta">Febrero 2026 - Quinto Mes de Novios</div></div>
     </div>
-
     <h2 style="margin-top:30px;">🎂 Cumpleaños 🎂</h2>
     <div class="fechas-container">
       <div class="fechas-flex"><div class="input-display">🎂</div><div class="input-display">07</div><div class="etiqueta">Octubre - Daniela 💞</div></div>
@@ -183,8 +175,12 @@ h3{ text-align:center; margin-top:-10px; }
   </div>
 </div>
 
+<!-- Mini juego de corazones -->
+<canvas id="gameCanvas" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:9999;"></canvas>
+<div id="scoreDisplay" style="position:fixed; top:10px; right:20px; font-size:24px; color:var(--accent); font-weight:bold; z-index:10000;">Puntos: 0</div>
+
 <script>
-// Contraseña
+// --- Contraseña ---
 const correct="2109";
 let input="";
 function add(n){ if(input.length<4){ input+=n; update(); } }
@@ -199,7 +195,7 @@ function check(){
   } else { alert("Contraseña incorrecta 💔"); input=""; update(); }
 }
 
-// Contador
+// --- Contador ---
 function actualizarContador(){
   const inicio = new Date(2025,8,21);
   const hoy = new Date();
@@ -213,12 +209,12 @@ function actualizarContador(){
   document.getElementById('dias').textContent = dias;
 }
 
-// Navegación
+// --- Navegación ---
 function abrirCarta(){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById("cartaScreen").classList.add("active"); }
 function abrirFechas(){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById("fechasScreen").classList.add("active"); }
 function abrirContador(){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById("contadorScreen").classList.add("active"); }
 
-// Corazones y confeti
+// --- Corazones y confeti ---
 function createHeart(){
   const heart=document.createElement("div");
   heart.className="heart";
@@ -243,7 +239,7 @@ function crearConfetti(){
   }
 }
 
-// Carrusel
+// --- Carrusel ---
 let posicion = 0;
 function moverCarrusel(direccion){
   const carrusel = document.getElementById('carrusel');
@@ -255,7 +251,7 @@ function moverCarrusel(direccion){
   carrusel.style.transform = `translateX(-${posicion}px)`;
 }
 
-// Modal imágenes
+// --- Modal imágenes ---
 document.querySelectorAll('.foto-container img').forEach(img=>{
   img.addEventListener('click', ()=>{
     const modal = document.createElement('div');
@@ -271,7 +267,7 @@ document.querySelectorAll('.foto-container img').forEach(img=>{
     modal.addEventListener('click', ()=> modal.remove());
   });
 });
-</script>
+  </script>
 
 </body>
 </html>
