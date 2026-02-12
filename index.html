@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feliz 14 de Febrero 💞</title>
+<title>FELIZ 14 DE FEBRERO MI NIÑA 💞</title>
 
 <style>
 :root{
@@ -15,7 +15,6 @@ body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
   background:var(--bg);
-  overflow:hidden;
   text-align:center;
 }
 
@@ -25,21 +24,81 @@ body{
   align-items:center;
   height:100vh;
   flex-direction:column;
-  opacity:0;
-  transition:0.6s;
+  padding:20px;
 }
 
 .active{
   display:flex;
-  opacity:1;
 }
 
-.keypad{
-  display:grid;
-  grid-template-columns:repeat(3,70px);
-  gap:12px;
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  background:var(--accent);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
   margin-top:20px;
 }
 
-.key{
-  border:n
+.card{
+  background:white;
+  max-width:700px;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  overflow:auto;
+  max-height:80vh;
+}
+</style>
+</head>
+
+<body>
+
+<div class="screen active" id="home">
+  <h1>FELIZ 14 DE FEBRERO MI NIÑA 💞</h1>
+  <button onclick="showLetter()">Abrir carta</button>
+</div>
+
+<div class="screen" id="letter">
+  <div class="card">
+    <h2>Para Daniela 💞</h2>
+    <p style="white-space: pre-line; text-align:left;">
+MI AMOSHITAAA,
+
+Antes de conocerte me sentía solo, sin ganas de conocer a alguien y en todo esho llegaste tú para cambiarlo todo. Desde que entraste en mi vida volví a sentir cosas hermosas, volví a ilusionarme con querer algo con una persona, y todo empezó a verse mucho máshh bonito contigo a mi laditooo.
+
+Has cambiado mi vida de tantas maneras que a veces nushee ni cómo explicarlo: ahora soy másh atento aunque a veces nu she pueda notar tantoo JSJSJSJS, me siento muyyyyy seguroo contigo, me enseñaste a quererme muchisimo máshhhh, hiciste que mis ojitos volvieran a brillar 🥺🥺 y eso es algo que jamás voy a dejar de agradecerte mi niñaaa.
+
+Tenemos tantos momentos lindosh, pero hay uno que nunca voy a olvidar JSJSJSJSJ cuando me quedé dormido pensando que había pasado todo un día y tú al principio nu entendias nadaa y después de esho hasta el día de hoy te burlas 😭😭😭.
+
+Amo tu humor, cómo siempre logras sacarme una sonrisa, y la paciencia infinita que me tienes. Me encanta que todos los días me cuentes cómo te fue y escuchar absolutamente todo de tu día. Y esha frase tuya que tanto amooo “Amorrr Jugamoshhhh”.
+
+Hoy para mí tú eres todo: mi novia, mi mejor amiga, mi futura esposa. Me haces sentir seguro, querido y en paz.
+
+Grashias por existir, por llegar a mi vida cuando menos lo esperaba y convertirla en algo tan hermoso.
+
+Feliz 14 de febrero, mi amor hoy y siempreee aunque por el momento nu estemos juntitoshhhh.
+
+TE AMOOOOOOOOOOOO 💞💞💞
+    </p>
+
+    <button onclick="goBack()">Volver</button>
+  </div>
+</div>
+
+<script>
+function showLetter(){
+  document.getElementById("home").classList.remove("active");
+  document.getElementById("letter").classList.add("active");
+}
+
+function goBack(){
+  document.getElementById("letter").classList.remove("active");
+  document.getElementById("home").classList.add("active");
+}
+</script>
+
+</body>
+</html>
