@@ -15,6 +15,7 @@ body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
   background:var(--bg);
+  overflow:hidden;
   text-align:center;
 }
 
@@ -25,106 +26,182 @@ body{
   align-items:center;
   height:100vh;
   flex-direction:column;
-  padding:20px;
-  animation:fade 0.6s ease;
 }
 
 .active{
   display:flex;
 }
 
-@keyframes fade{
-  from{opacity:0; transform:scale(0.98);}
-  to{opacity:1; transform:scale(1);}
-}
-
-/* Input contraseña */
-input{
-  padding:12px;
-  border-radius:10px;
-  border:2px solid var(--accent);
-  text-align:center;
-  font-size:18px;
-  width:150px;
-}
-
-/* Botones */
-button{
-  padding:10px 20px;
-  border:none;
-  border-radius:10px;
-  background:var(--accent);
-  color:white;
-  font-size:16px;
-  cursor:pointer;
+/* Contraseña */
+.keypad{
+  display:grid;
+  grid-template-columns:repeat(3,70px);
+  gap:12px;
   margin-top:20px;
-  transition:0.3s;
 }
 
-button:hover{
+.key{
+  border:none;
+  background:white;
+  font-size:20px;
+  padding:15px;
+  border-radius:15px;
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  transition:0.2s;
+}
+
+.key:hover{
+  background:#ffd1e6;
   transform:scale(1.05);
 }
 
+.input-display{
+  font-size:28px;
+  letter-spacing:10px;
+  margin-top:20px;
+}
+
 /* Carta */
-.card{
+.carta{
   background:white;
-  max-width:750px;
+  width:90%;
+  max-width:600px;
   padding:30px;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
-  overflow:auto;
+  border-radius:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
   max-height:80vh;
+  overflow-y:auto;
   text-align:left;
-  white-space:pre-line;
+}
+
+h1{
+  color:var(--accent);
+  text-align:center;
+}
+
+h3{
+  text-align:center;
+  margin-top:-10px;
+}
+
+/* Corazones */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation:floatUp linear infinite;
+  opacity:0.8;
+  pointer-events:none;
+}
+
+@keyframes floatUp{
+  from{
+    transform:translateY(0) rotate(0deg);
+    opacity:0.8;
+  }
+  to{
+    transform:translateY(-110vh) rotate(360deg);
+    opacity:0;
+  }
 }
 </style>
 </head>
-
 <body>
 
 <!-- Pantalla contraseña -->
-<div class="screen active" id="lock">
-  <h1>Ingresa la contraseña 💞</h1>
-  <input type="password" id="password" placeholder="****">
-  <button onclick="checkPassword()">Entrar</button>
-  <p id="error" style="color:red;"></p>
+<div id="passwordScreen" class="screen active">
+  <h2>Ingresa la contraseña 💞</h2>
+  <div class="input-display" id="display">••••</div>
+  <div class="keypad">
+    <button class="key" onclick="add('1')">1</button>
+    <button class="key" onclick="add('2')">2</button>
+    <button class="key" onclick="add('3')">3</button>
+    <button class="key" onclick="add('4')">4</button>
+    <button class="key" onclick="add('5')">5</button>
+    <button class="key" onclick="add('6')">6</button>
+    <button class="key" onclick="add('7')">7</button>
+    <button class="key" onclick="add('8')">8</button>
+    <button class="key" onclick="add('9')">9</button>
+    <button class="key" onclick="check()">✔</button>
+    <button class="key" onclick="add('0')">0</button>
+    <button class="key" onclick="del()">⌫</button>
+  </div>
 </div>
 
-<!-- Carta -->
-<div class="screen" id="letter">
-  <h1>FELIZ 14 DE FEBRERO MI NIÑA 💞</h1>
-  <div class="card">
-MI AMOSHITAAA,
+<!-- Pantalla carta -->
+<div id="cartaScreen" class="screen">
+  <div class="carta">
+    <h1>FELIZ 14 DE FEBRERO MI NIÑA 💞</h1>
+    <h3>14 de Febrero 2026</h3>
 
-Antes de conocerte me sentía solo, sin ganas de conocer a alguien y en todo esho llegaste tú para cambiarlo todo. Desde que entraste en mi vida volví a sentir cosas hermosas, volví a ilusionarme con querer algo con una persona, y todo empezó a verse mucho máshh bonito contigo a mi laditooo.
+<p><strong>MI AMOSHITAAA,</strong></p>
 
-Has cambiado mi vida de tantas maneras que a veces nushee ni cómo explicarlo: ahora soy másh atento aunque a veces nu she pueda notar tantoo JSJSJSJS, me siento muyyyyy seguroo contigo, me enseñaste a quererme muchisimo máshhhh, hiciste que mis ojitos volvieran a brillar 🥺🥺 y eso es algo que jamás voy a dejar de agradecerte mi niñaaa.
+<p>Antes de conocerte me sentía solo, sin ganas de conocer a alguien y en todo eso llegaste tú para cambiarlo todo. Desde que entraste en mi vida volví a sentir cosas hermosas, volví a ilusionarme con querer algo con una persona, y todo empezó a verse mucho más bonito contigo a mi ladito.</p>
 
-Tenemos tantos momentos lindosh, pero hay uno que nunca voy a olvidar JSJSJSJSJ cuando me quedé dormido pensando que había pasado todo un día y tú al principio nu entendias nadaa y después de esho hasta el día de hoy te burlas 😭😭😭.
+<p>Has cambiado mi vida de tantas maneras que a veces ni sé cómo explicarlo. Ahora soy más atento (aunque a veces no se note JSJSJS), me siento muy seguro contigo, me enseñaste a quererme muchísimo más, hiciste que mis ojitos volvieran a brillar 🥺 y eso es algo que jamás voy a dejar de agradecerte mi niña.</p>
 
-Amo tu humor, cómo siempre logras sacarme una sonrisa, y la paciencia infinita que me tienes. Me encanta que todos los días me cuentes cómo te fue y escuchar absolutamente todo de tu día. Y esha frase tuya que tanto amooo “Amorrr Jugamoshhhh”.
+<p>Tenemos tantos momentos lindos, pero nunca olvidaré cuando me quedé dormido pensando que había pasado todo un día y tú no entendías nada 😭. Me encanta eso de nosotros, reírnos juntos, y que aunque digas que no eres tan cariñosa, conmigo siempre lo seas tanto.</p>
 
-Hoy para mí tú eres todo: mi novia, mi mejor amiga, mi futura esposa. Me haces sentir seguro, querido y en paz.
+<p>Amo tu humor, tu paciencia infinita conmigo, que me cuentes cómo te fue cada día y esa frase tuya que tanto amo: <strong>“Amorrr Jugamoshhhh”</strong>. Y aunque me encanta todo de ti, tus ojitos tienen algo que me encanta demasiado.</p>
 
-Grashias por existir, por llegar a mi vida cuando menos lo esperaba y convertirla en algo tan hermoso.
+<p>Hoy eres todo para mí: mi novia, mi mejor amiga, mi futura esposa. Me ilusiona nuestro futuro, vivir juntos, formar nuestra familia, tener nuestros dos hijos, casarnos y recorrer el mundo de la mano.</p>
 
-Feliz 14 de febrero, mi amor hoy y siempreee aunque por el momento nu estemos juntitoshhhh.
+<p>Gracias por existir, por llegar cuando menos lo esperaba y convertir mi vida en algo tan hermoso.</p>
 
-TE AMOOOOOOOOOOOO 💞💞💞
+<p><strong>Feliz 14 de febrero, mi amor. Te elijo hoy y siempre, aunque por ahora no estemos juntitos.</strong></p>
+
+<p style="text-align:center; font-size:22px;"><strong>TE AMOOOOOOOOOOOO 💞💞💞</strong></p>
+
   </div>
 </div>
 
 <script>
-function checkPassword(){
-  const pass = document.getElementById("password").value;
-  if(pass === "2109"){
-    document.getElementById("lock").classList.remove("active");
-    document.getElementById("letter").classList.add("active");
-  } else {
-    document.getElementById("error").textContent = "Contraseña incorrecta 💔";
+const correct="2109";
+let input="";
+
+function add(n){
+  if(input.length<4){
+    input+=n;
+    update();
   }
 }
+
+function del(){
+  input=input.slice(0,-1);
+  update();
+}
+
+function update(){
+  document.getElementById("display").textContent=input.padEnd(4,"•");
+}
+
+function check(){
+  if(input===correct){
+    document.getElementById("passwordScreen").classList.remove("active");
+    document.getElementById("cartaScreen").classList.add("active");
+  }else{
+    alert("Contraseña incorrecta 💔");
+    input="";
+    update();
+  }
+}
+
+/* Corazones flotando */
+function createHeart(){
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="💞";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(Math.random()*3+4)+"s";
+  heart.style.fontSize=(Math.random()*20+15)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),7000);
+}
+
+setInterval(createHeart,400);
 </script>
 
 </body>
 </html>
+
