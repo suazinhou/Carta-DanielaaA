@@ -27,33 +27,28 @@ body{
 .active{ display:flex; }
 
 /* Teclas y recuadros */
-.keypad, .contador-container{
-  display:flex;
-  justify-content:center;
-  gap:20px;
+.keypad{
+  display:grid;
+  grid-template-columns:repeat(3,70px);
+  gap:12px;
   margin-top:20px;
 }
-.key, .contador-num, .fecha-num, .emoji-num{
+.key{
   border:none;
   background:white;
-  font-size:28px;
-  padding:25px 35px;
+  font-size:20px;
+  padding:15px;
   border-radius:15px;
   cursor:pointer;
   box-shadow:0 4px 10px rgba(0,0,0,0.1);
   transition:0.2s;
-  font-family:'Segoe UI',sans-serif;
-  min-width:70px;
-  text-align:center;
 }
-.key:hover, .contador-num:hover, .fecha-num:hover, .emoji-num:hover{
-  background:#ffd1e6;
-  transform:scale(1.05);
-}
+.key:hover{ background:#ffd1e6; transform:scale(1.05); }
+
 .input-display{
   font-size:28px;
   letter-spacing:10px;
-  margin-top:10px;
+  margin-top:20px;
   font-family:'Segoe UI',sans-serif;
   color:var(--accent);
   border:2px solid var(--accent);
@@ -62,16 +57,6 @@ body{
   display:inline-block;
   min-width:50px;
   text-align:center;
-}
-.input-display-emoji{
-  font-size:28px;
-  border:2px solid var(--accent);
-  border-radius:12px;
-  padding:10px 15px;
-  display:inline-block;
-  min-width:50px;
-  text-align:center;
-  background:white;
 }
 
 /* Mensaje de contraseña */
@@ -84,6 +69,8 @@ body{
   font-style: italic;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
+
+/* Carta y botones */
 .carta{
   background:white;
   width:90%;
@@ -96,41 +83,38 @@ body{
 h1{ color:var(--accent); text-align:center; }
 h3{ text-align:center; margin-top:-10px; }
 
-/* Carrusel */
-.carrusel-container { position: relative; width: 100%; overflow: hidden; margin: 20px 0; }
-.carrusel { display: flex; gap: 10px; transition: transform 0.4s ease; }
-.carrusel .foto-container { min-width: 200px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; }
-.carrusel img { width: 200px; height: 150px; object-fit: cover; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); cursor: pointer; transition: transform 0.3s; }
-.carrusel img:hover { transform: scale(1.05); }
-.caption { font-family: 'Segoe UI', 'Segoe Script', cursive; font-size: 16px; color: #ff4da6; text-align: center; margin-top: 6px; font-style: italic; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
-.caption:hover { transform: scale(1.05); color: #ff2e7a; }
-.flecha { position: absolute; top: 50%; transform: translateY(-50%); font-size: 2rem; color: var(--accent); background: rgba(255,255,255,0.8); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; user-select: none; box-shadow: 0 3px 10px rgba(0,0,0,0.2); }
-.flecha:hover { background: var(--accent); color: white; }
-.flecha-left { left: 5px; }
-.flecha-right { right: 5px; }
-
-/* Corazones flotantes */
-.heart{ position:fixed; bottom:-20px; font-size:20px; animation:floatUp linear infinite; opacity:0.8; pointer-events:none; }
-@keyframes floatUp{ from{ transform:translateY(0) rotate(0deg); opacity:0.8; } to{ transform:translateY(-110vh) rotate(360deg); opacity:0; } }
-
-/* Confeti */
-.confetti { position: fixed; width: 10px; height: 10px; border-radius: 50%; pointer-events: none; z-index: 999; animation: confettiFall linear forwards; }
-@keyframes confettiFall { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
-
-/* Botones */
-#btnCarta, #btnFechas{ margin-top:20px; border:none; background:white; font-size:24px; padding:20px 40px; border-radius:15px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.2s; margin-right:10px;}
-#btnCarta:hover, #btnFechas:hover{ background:#ffd1e6; transform:scale(1.05); }
-
 /* Contador y fechas */
-.contador-item, .fecha-item{ display:flex; flex-direction:column; align-items:center; margin-bottom:15px; }
+.contador-container{ display:flex; justify-content:center; gap:20px; margin-top:20px; }
+.contador-item{ display:flex; flex-direction:column; align-items:center; }
 .etiqueta{ margin-top:8px; font-size:16px; color:var(--accent); font-weight:bold; }
 .fechas-container{ display:flex; flex-direction:column; align-items:center; margin-top:20px; gap:15px; }
 .fechas-flex{ display:flex; align-items:center; gap:10px; justify-content:center; }
+
+/* Botones navegación */
+#btnCarta, #btnFechas{
+  margin-top:20px;
+  border:none;
+  background:white;
+  font-size:24px;
+  padding:20px 40px;
+  border-radius:15px;
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  transition:0.2s;
+  margin-right:10px;
+}
+#btnCarta:hover, #btnFechas:hover{ background:#ffd1e6; transform:scale(1.05); }
+
+/* Corazones y confeti */
+.heart{ position:fixed; bottom:-20px; font-size:20px; animation:floatUp linear infinite; opacity:0.8; pointer-events:none; }
+@keyframes floatUp{ from{ transform:translateY(0) rotate(0deg); opacity:0.8; } to{ transform:translateY(-110vh) rotate(360deg); opacity:0; } }
+.confetti{ position: fixed; width: 10px; height: 10px; border-radius: 50%; pointer-events: none; z-index: 999; animation: confettiFall linear forwards; }
+@keyframes confettiFall{ 0%{ transform:translateY(0) rotate(0deg); opacity:1;} 100%{ transform:translateY(100vh) rotate(360deg); opacity:0;} }
 </style>
 </head>
 <body>
 
-<!-- Pantalla de contraseña -->
+<!-- Pantalla contraseña -->
 <div id="passwordScreen" class="screen active">
   <h2>Ingresa la contraseña 💞</h2>
   <div class="input-display" id="display">••••</div>
@@ -151,7 +135,7 @@ h3{ text-align:center; margin-top:-10px; }
   </div>
 </div>
 
-<!-- Pantalla contador -->
+<!-- Contador de días juntos -->
 <div id="contadorScreen" class="screen">
   <div class="carta">
     <h1>💞 Tiempo que llevamos juntos 💞</h1>
@@ -169,34 +153,29 @@ h3{ text-align:center; margin-top:-10px; }
         <div class="etiqueta">Días</div>
       </div>
     </div>
-    <div style="margin-top:20px;">
-      <button id="btnCarta" onclick="abrirCarta()">14 de Febrero 💞</button>
-      <button id="btnFechas" onclick="abrirFechas()">Fechas Especiales 🥺</button>
-    </div>
+    <button id="btnCarta" onclick="abrirCarta()">14 de Febrero 💞</button>
+    <button id="btnFechas" onclick="abrirFechas()">Fechas Especiales 🥺</button>
   </div>
 </div>
 
-<!-- Pantalla fechas especiales -->
+<!-- Fechas especiales -->
 <div id="fechasScreen" class="screen">
   <div class="carta">
     <h1>🎉 Fechas Especiales 🎉</h1>
     <div class="fechas-container">
-      <!-- Meses -->
-      <div class="fechas-flex"><div class="input-display input-display-emoji">💞</div><div class="input-display">21</div><div class="etiqueta">Septiembre 2025 - Primer Día de Novios</div></div>
-      <div class="fechas-flex"><div class="input-display input-display-emoji">💞</div><div class="input-display">21</div><div class="etiqueta">Octubre 2025 - Primer Mes de Novios</div></div>
-      <div class="fechas-flex"><div class="input-display input-display-emoji">💞</div><div class="input-display">21</div><div class="etiqueta">Noviembre 2025 - Segundo Mes de Novios</div></div>
-      <div class="fechas-flex"><div class="input-display input-display-emoji">💞</div><div class="input-display">21</div><div class="etiqueta">Diciembre 2025 - Tercer Mes de Novios</div></div>
-      <div class="fechas-flex"><div class="input-display input-display-emoji">💞</div><div class="input-display">21</div><div class="etiqueta">Enero 2026 - Cuarto Mes de Novios</div></div>
-      <div class="fechas-flex"><div class="input-display input-display-emoji">⏳</div><div class="input-display">21</div><div class="etiqueta">Febrero 2026 - Quinto Mes de Novios</div></div>
+      <div class="fechas-flex"><div class="input-display">💞</div><div class="input-display">21</div><div class="etiqueta">Septiembre 2025 - Primer Día de Novios</div></div>
+      <div class="fechas-flex"><div class="input-display">💞</div><div class="input-display">21</div><div class="etiqueta">Octubre 2025 - Primer Mes de Novios</div></div>
+      <div class="fechas-flex"><div class="input-display">💞</div><div class="input-display">21</div><div class="etiqueta">Noviembre 2025 - Segundo Mes de Novios</div></div>
+      <div class="fechas-flex"><div class="input-display">💞</div><div class="input-display">21</div><div class="etiqueta">Diciembre 2025 - Tercer Mes de Novios</div></div>
+      <div class="fechas-flex"><div class="input-display">💞</div><div class="input-display">21</div><div class="etiqueta">Enero 2026 - Cuarto Mes de Novios</div></div>
+      <div class="fechas-flex"><div class="input-display">⏳</div><div class="input-display">21</div><div class="etiqueta">Febrero 2026 - Quinto Mes de Novios</div></div>
     </div>
 
-    <!-- Cumpleaños -->
     <h2 style="margin-top:30px;">🎂 Cumpleaños 🎂</h2>
     <div class="fechas-container">
-      <div class="fechas-flex"><div class="input-display input-display-emoji">🎂</div><div class="input-display">07</div><div class="etiqueta">Octubre - Daniela 💞</div></div>
-      <div class="fechas-flex"><div class="input-display input-display-emoji">🎂</div><div class="input-display">07</div><div class="etiqueta">Marzo - Dylan 💞</div></div>
+      <div class="fechas-flex"><div class="input-display">🎂</div><div class="input-display">07</div><div class="etiqueta">Octubre - Daniela 💞</div></div>
+      <div class="fechas-flex"><div class="input-display">🎂</div><div class="input-display">07</div><div class="etiqueta">Marzo - Dylan 💞</div></div>
     </div>
-
     <button id="btnCarta" onclick="abrirCarta()" style="margin-top:30px;">14 de Febrero 💞</button>
   </div>
 </div>
@@ -207,7 +186,7 @@ h3{ text-align:center; margin-top:-10px; }
     <h1>FELIZ 14 DE FEBRERO MI NIÑA 💞</h1>
     <h3>14 de Febrero 2026</h3>
     <p><strong>MI AMOSHITAAA,</strong> 
-      <p>Este es nuestro primer 14 de febrero, nu solo como Novios, shi nu también conociéndonos, Antes de conocerte me sentía bastante solito, sin ganas de conocer a alguien, nu estaba mal ni nada simplemente nadie me llamaba la atención, y en medio de todo esho, Llegaste tú para cambiarlo todoooo. Desde que entraste en mi vida volví a sentir cosas hermosas, volví a ilusionarme con querer algo con una persona, y todo empezó a verse mucho máshh bonito contigo a mi laditooo.</p>
+    <p>Este es nuestro primer 14 de febrero, nu solo como Novios, shi nu también conociéndonos, Antes de conocerte me sentía bastante solito, sin ganas de conocer a alguien, nu estaba mal ni nada simplemente nadie me llamaba la atención, y en medio de todo esho, Llegaste tú para cambiarlo todoooo. Desde que entraste en mi vida volví a sentir cosas hermosas, volví a ilusionarme con querer algo con una persona, y todo empezó a verse mucho máshh bonito contigo a mi laditooo.</p>
     <p>Has cambiado mi vida de tantas maneras que a veces nushee ni cómo explicarlo: Ahora soy másh atento aunque a veces nu she pueda notar tantoo JSJSJSJS, me siento  muyyyyy seguroo contigo, me enseñaste a quererme muchisimo máshhhh, hiciste que mis ojitos volvieran a brillar 🥺🥺 y eso es algo que jamás voy a dejar de agradecerte mi niñaaa. El simple hecho de hablar contigo, que me contaras tu día, tus cosas, tu forma de ser, y lo increíblemente preciosa que ereshhh, fue suficiente para que me diera cuenta de cuánto me gustabas y de cuánto te sigo eligiendo todos los días y para siempreeee.</p>
     <p>Tenemos tantos momentos lindosh y graciosos juntoshhh, pero hay uno que nunca voy a olvidar JSJSJSJSJ, El dia cuando me quede dormido y desperte pensando que había pasado todo un día desde que me dormí, tú al principio nu entendias nadaa, pensabash que estaba de bromaa o quien sabe shi hasta pensaste que estaba lokito JSJSJSJS, eshe momento aunque me sigue dando vergüenza nu puedo negar que sigue siendo muy gracioso y es un buen recuerdoo JSJSJS, después de esho hasta el dia de hoy te burlas 😭😭😭 JSJSJSJSJS. Shi te soy sincero, me encanta eso de nosotros, reírnos juntos, y también que aunque siempre dices que nu eres cariñosa, conmigo siempre lo seas tantoooo mi amorrrrr.</p>
     <p>Tengo muchas coshas que amo de ti, por ejemplo, Amo tu humor, cómo siempre logras sacarme una sonrisa yia sea con tus stickers o cualquier cosita, y obviamente la paciencia infinita que me tienes SJSJSJSJSJ. Me encanta que todos los días me cuentes cómo te fue, shi fue bueno o malo, y escuchar absolutamente todo de tu día. Existe una frase tuya que quiza nunca te lo dije pero la verdad me encanta y la amo tantooo: “Amorrr Jugamoshhhh”. Shi puede ser algo simpleee pero yio lo aprecio mucho. Y aunque me fascinaa todo de tiii, tus ojitos tan bellos tienen algo que me ENCANTAAAAA.</p>
@@ -249,14 +228,8 @@ function actualizarContador(){
 }
 
 // Navegación
-function abrirCarta(){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById("cartaScreen").classList.add("active");
-}
-function abrirFechas(){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById("fechasScreen").classList.add("active");
-}
+function abrirCarta(){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById("cartaScreen").classList.add("active"); }
+function abrirFechas(){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById("fechasScreen").classList.add("active"); }
 
 // Corazones flotando
 function createHeart(){
