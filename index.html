@@ -16,94 +16,46 @@ body{
   text-align:center;
   overflow-x:hidden;
 }
-.screen{
-  display:none;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
-  flex-direction:column;
-  padding:20px;
-}
+.screen{ display:none; justify-content:center; align-items:center; min-height:100vh; flex-direction:column; padding:20px; }
 .active{ display:flex; }
 
-/* Teclas y recuadros */
-.keypad{
-  display:grid;
-  grid-template-columns:repeat(3,70px);
-  gap:12px;
-  margin-top:20px;
-}
-.key{
-  border:none;
-  background:white;
-  font-size:20px;
-  padding:15px;
-  border-radius:15px;
-  cursor:pointer;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-  transition:0.2s;
-}
+/* Teclado y display */
+.keypad{ display:grid; grid-template-columns:repeat(3,70px); gap:12px; margin-top:20px; }
+.key{ border:none; background:white; font-size:20px; padding:15px; border-radius:15px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.2s; }
 .key:hover{ background:#ffd1e6; transform:scale(1.05); }
+.input-display{ font-size:28px; letter-spacing:10px; margin-top:20px; font-family:'Segoe UI',sans-serif; color:var(--accent); border:2px solid var(--accent); border-radius:12px; padding:10px 15px; display:inline-block; min-width:50px; text-align:center; }
 
-.input-display{
-  font-size:28px;
-  letter-spacing:10px;
-  margin-top:20px;
-  font-family:'Segoe UI',sans-serif;
-  color:var(--accent);
-  border:2px solid var(--accent);
-  border-radius:12px;
-  padding:10px 15px;
-  display:inline-block;
-  min-width:50px;
-  text-align:center;
-}
-
-/* Mensaje de contraseña */
-#passwordMessage {
-  font-family: 'Segoe UI', 'Segoe Script', cursive;
-  font-size: 16px;
-  color: #ff4da6;
-  text-align: center;
-  margin-top: 15px;
-  font-style: italic;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
+/* Mensaje */
+#passwordMessage{ font-family: 'Segoe UI', 'Segoe Script', cursive; font-size: 16px; color: #ff4da6; text-align: center; margin-top: 15px; font-style: italic; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
 
 /* Carta y botones */
-.carta{
-  background:white;
-  width:90%;
-  max-width:700px;
-  padding:30px;
-  border-radius:25px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.2);
-  text-align:left;
-}
+.carta{ background:white; width:90%; max-width:700px; padding:30px; border-radius:25px; box-shadow:0 10px 30px rgba(0,0,0,0.2); text-align:left; }
 h1{ color:var(--accent); text-align:center; }
 h3{ text-align:center; margin-top:-10px; }
+#btnCarta, #btnFechas, .btnVolver{ margin-top:20px; border:none; background:white; font-size:24px; padding:20px 40px; border-radius:15px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.2s; margin-right:10px; }
+#btnCarta:hover, #btnFechas:hover, .btnVolver:hover{ background:#ffd1e6; transform:scale(1.05); }
 
-/* Contador y fechas */
+/* Contador */
 .contador-container{ display:flex; justify-content:center; gap:20px; margin-top:20px; }
 .contador-item{ display:flex; flex-direction:column; align-items:center; }
 .etiqueta{ margin-top:8px; font-size:16px; color:var(--accent); font-weight:bold; }
+
+/* Fechas especiales */
 .fechas-container{ display:flex; flex-direction:column; align-items:center; margin-top:20px; gap:15px; }
 .fechas-flex{ display:flex; align-items:center; gap:10px; justify-content:center; }
 
-/* Botones navegación */
-#btnCarta, #btnFechas{
-  margin-top:20px;
-  border:none;
-  background:white;
-  font-size:24px;
-  padding:20px 40px;
-  border-radius:15px;
-  cursor:pointer;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-  transition:0.2s;
-  margin-right:10px;
-}
-#btnCarta:hover, #btnFechas:hover{ background:#ffd1e6; transform:scale(1.05); }
+/* Carrusel */
+.carrusel-container { position: relative; width: 100%; overflow: hidden; margin: 20px 0; }
+.carrusel { display: flex; gap: 10px; transition: transform 0.4s ease; }
+.carrusel .foto-container { min-width: 200px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; }
+.carrusel img { width: 100%; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); cursor: pointer; transition: transform 0.3s; }
+.carrusel img:hover{ transform: scale(1.05); }
+.caption{ font-family: 'Segoe UI', 'Segoe Script', cursive; font-size: 16px; color: #ff4da6; text-align: center; margin-top: 6px; font-style: italic; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+.caption:hover{ transform: scale(1.05); color: #ff2e7a; }
+.flecha { position: absolute; top: 50%; transform: translateY(-50%); font-size: 2rem; color: var(--accent); background: rgba(255,255,255,0.8); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; user-select: none; box-shadow: 0 3px 10px rgba(0,0,0,0.2); }
+.flecha:hover{ background: var(--accent); color: white; }
+.flecha-left { left: 5px; }
+.flecha-right { right: 5px; }
 
 /* Corazones y confeti */
 .heart{ position:fixed; bottom:-20px; font-size:20px; animation:floatUp linear infinite; opacity:0.8; pointer-events:none; }
@@ -176,7 +128,7 @@ h3{ text-align:center; margin-top:-10px; }
       <div class="fechas-flex"><div class="input-display">🎂</div><div class="input-display">07</div><div class="etiqueta">Octubre - Daniela 💞</div></div>
       <div class="fechas-flex"><div class="input-display">🎂</div><div class="input-display">07</div><div class="etiqueta">Marzo - Dylan 💞</div></div>
     </div>
-    <button id="btnCarta" onclick="abrirCarta()" style="margin-top:30px;">14 de Febrero 💞</button>
+    <button class="btnVolver" onclick="abrirContador()">Volver</button>
   </div>
 </div>
 
@@ -185,7 +137,23 @@ h3{ text-align:center; margin-top:-10px; }
   <div class="carta">
     <h1>FELIZ 14 DE FEBRERO MI NIÑA 💞</h1>
     <h3>14 de Febrero 2026</h3>
-    <p><strong>MI AMOSHITAAA,</strong> 
+
+    <!-- Carrusel -->
+    <div class="carrusel-container">
+      <div class="flecha flecha-left" onclick="moverCarrusel(-1)">&#10094;</div>
+      <div class="carrusel" id="carrusel">
+        <div class="foto-container"><img src="foto1.jpg.png" alt="Recuerdo 1"><p class="caption">Nuestra primer Fotito Jjsjssjjs</p></div>
+        <div class="foto-container"><img src="foto2.jpg.png" alt="Recuerdo 2"></div>
+        <div class="foto-container"><img src="foto3.jpg.png" alt="Recuerdo 3"></div>
+        <div class="foto-container"><img src="foto4.jpg.png" alt="Recuerdo 4"></div>
+        <div class="foto-container"><img src="foto5.jpg.png" alt="Recuerdo 5"><p class="caption">Foto que tomé porque me pareció tierno</p></div>
+        <div class="foto-container"><img src="foto6.jpg.png" alt="Recuerdo 6"><p class="caption">Foto Favorita &lt;3</p></div>
+      </div>
+      <div class="flecha flecha-right" onclick="moverCarrusel(1)">&#10095;</div>
+    </div>
+
+    <!-- Texto romántico -->
+    <p><strong>MI AMOSHITAAA,</strong>
     <p>Este es nuestro primer 14 de febrero, nu solo como Novios, shi nu también conociéndonos, Antes de conocerte me sentía bastante solito, sin ganas de conocer a alguien, nu estaba mal ni nada simplemente nadie me llamaba la atención, y en medio de todo esho, Llegaste tú para cambiarlo todoooo. Desde que entraste en mi vida volví a sentir cosas hermosas, volví a ilusionarme con querer algo con una persona, y todo empezó a verse mucho máshh bonito contigo a mi laditooo.</p>
     <p>Has cambiado mi vida de tantas maneras que a veces nushee ni cómo explicarlo: Ahora soy másh atento aunque a veces nu she pueda notar tantoo JSJSJSJS, me siento  muyyyyy seguroo contigo, me enseñaste a quererme muchisimo máshhhh, hiciste que mis ojitos volvieran a brillar 🥺🥺 y eso es algo que jamás voy a dejar de agradecerte mi niñaaa. El simple hecho de hablar contigo, que me contaras tu día, tus cosas, tu forma de ser, y lo increíblemente preciosa que ereshhh, fue suficiente para que me diera cuenta de cuánto me gustabas y de cuánto te sigo eligiendo todos los días y para siempreeee.</p>
     <p>Tenemos tantos momentos lindosh y graciosos juntoshhh, pero hay uno que nunca voy a olvidar JSJSJSJSJ, El dia cuando me quede dormido y desperte pensando que había pasado todo un día desde que me dormí, tú al principio nu entendias nadaa, pensabash que estaba de bromaa o quien sabe shi hasta pensaste que estaba lokito JSJSJSJS, eshe momento aunque me sigue dando vergüenza nu puedo negar que sigue siendo muy gracioso y es un buen recuerdoo JSJSJS, después de esho hasta el dia de hoy te burlas 😭😭😭 JSJSJSJSJS. Shi te soy sincero, me encanta eso de nosotros, reírnos juntos, y también que aunque siempre dices que nu eres cariñosa, conmigo siempre lo seas tantoooo mi amorrrrr.</p>
@@ -194,6 +162,8 @@ h3{ text-align:center; margin-top:-10px; }
     <p>Contigo he aprendido tantoo hasta incluso de tu país, de tus costumbres, de sus comidas, de cómo viven estas todas las fechass. Me encanta descubrir el mundo a través de tiiii JSJSJSJSJS.</p>
     <p>Y cuando pienso en el futuro, solo te imagino a ti mi amor. Me ilusiona vivir contigo, Formar una familia, Cumplir nuestro sueño de tener dos hijos, casarnos y pasar la vida entera juntos. Quiero viajar contigo, mostrarte cada rincón de mi país, conocer el tuyo de tu mano y después recorrer otros países juntos, creando recuerdos que sean solo nuestros mi chiquitaaa.</p>
     <p>Por último, GRASHIAS por existir, por llegar a mi vida de la manera másh inesperada y cuando menosh me lo esperaba y convertirla en algo tan hermosho. Feliz 14 de febrero Mi Amor, Aunque por el momento nu podemosh estar juntitoshhhh, Créeme que yio te elijo a ti SIEMPREEEEEEEEE MI AMOLLLLLLLL TE AMOOOOOOOOOOOO 💞💞💞💞💞💞</p>
+    
+    <button class="btnVolver" onclick="abrirContador()">Volver</button>
   </div>
 </div>
 
@@ -213,7 +183,7 @@ function check(){
   } else { alert("Contraseña incorrecta 💔"); input=""; update(); }
 }
 
-// Contador de días
+// Contador
 function actualizarContador(){
   const inicio = new Date(2025,8,21);
   const hoy = new Date();
@@ -230,8 +200,9 @@ function actualizarContador(){
 // Navegación
 function abrirCarta(){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById("cartaScreen").classList.add("active"); }
 function abrirFechas(){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById("fechasScreen").classList.add("active"); }
+function abrirContador(){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById("contadorScreen").classList.add("active"); }
 
-// Corazones flotando
+// Corazones y confeti
 function createHeart(){
   const heart=document.createElement("div");
   heart.className="heart";
@@ -244,7 +215,6 @@ function createHeart(){
 }
 setInterval(createHeart,400);
 
-// Confeti
 function crearConfetti(){
   for(let i=0;i<100;i++){
     const c=document.createElement("div");
@@ -256,7 +226,36 @@ function crearConfetti(){
     setTimeout(()=>c.remove(),6000);
   }
 }
+
+// Carrusel
+let posicion = 0;
+function moverCarrusel(direccion){
+  const carrusel = document.getElementById('carrusel');
+  const containerWidth = carrusel.parentElement.offsetWidth;
+  const fotoWidth = carrusel.querySelector('.foto-container').offsetWidth + 10;
+  const maxPos = carrusel.scrollWidth - containerWidth;
+  posicion += direccion * fotoWidth;
+  posicion = Math.max(0, Math.min(posicion, maxPos));
+  carrusel.style.transform = `translateX(-${posicion}px)`;
+}
+
+// Modal imágenes
+document.querySelectorAll('.foto-container img').forEach(img=>{
+  img.addEventListener('click', ()=>{
+    const modal = document.createElement('div');
+    modal.className='modal';
+    modal.style.cssText="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;justify-content:center;align-items:center;z-index:999;";
+    const modalImg = document.createElement('img');
+    modalImg.src = img.src;
+    modalImg.style.maxWidth="90%";
+    modalImg.style.maxHeight="90%";
+    modalImg.style.borderRadius="20px";
+    modal.appendChild(modalImg);
+    document.body.appendChild(modal);
+    modal.addEventListener('click', ()=> modal.remove());
+  });
+});
 </script>
 
 </body>
-</html>
+</html>en
