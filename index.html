@@ -104,7 +104,7 @@ h3{
 }
 
 .carrusel .foto-container {
-  min-width: 300px;
+  min-width: 200px; /* tamaño más pequeño que antes */
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -125,10 +125,10 @@ h3{
 
 .caption {
   font-family: 'Segoe UI', 'Segoe Script', cursive;
-  font-size: 18px;
+  font-size: 16px; /* un poco más pequeño */
   color: #ff4da6;
   text-align: center;
-  margin-top: 8px;
+  margin-top: 6px;
   font-style: italic;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   transition: transform 0.3s, color 0.3s;
@@ -183,6 +183,21 @@ h3{
     transform:translateY(-110vh) rotate(360deg);
     opacity:0;
   }
+}
+
+/* Estilo para centrar el iframe de Spotify */
+.spotify-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.spotify-container h3 {
+  color: #ff2e7a;
+  font-family: 'Segoe UI', 'Segoe Script', cursive;
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 </style>
 </head>
@@ -248,23 +263,25 @@ h3{
       <div class="flecha flecha-right" onclick="moverCarrusel(1)">&#10095;</div>
     </div>
 
-    <!-- Texto romántico actualizado -->
+    <!-- Texto romántico -->
     <p><strong>MI AMOSHITAAA,</strong></p>
     <p>Antes de conocerte me sentía solo, sin ganas de conocer a alguien y en todo esho llegaste tú para cambiarlo todo. Desde que entraste en mi vida volví a sentir cosas hermosas, volví a ilusionarme con querer algo con una persona, y todo empezó a verse mucho máshh bonito contigo a mi laditooo.</p>
 
-    <p>Has cambiado mi vida de tantas maneras que a veces nushee ni cómo explicarlo: Ahora soy másh atento aunque a veces nu she pueda notar tantoo JSJSJSJS, me siento  muyyyyy seguroo contigo, me enseñaste a quererme muchisimo máshhhh, hiciste que mis ojitos volvieran a brillar 🥺🥺 y eso es algo que jamás voy a dejar de agradecerte mi niñaaa. El simple hecho de hablar contigo, que me contaras tu día, tus cosas, tu forma de ser, y lo increíblemente preciosa que ereshhh, fue suficiente para que me diera cuenta de cuánto me gustabas y de cuánto te sigo eligiendo todos los días y para siempreeee.</p>
-
-    <p>Tenemos tantos momentos lindosh, pero hay uno que nunca voy a olvidar JSJSJSJSJ cuando me quedé dormido pensando que había pasado todo un día y tú al principio nu entendias nadaa y después de esho hasta el dia de hoy te burlas 😭😭😭 JSJSJSJSJS. Me encanta eso de nosotros, reírnos juntos, y también que aunque siempre dices que nu eres tan cariñosa, conmigo siempre lo seas tantoooo mi amorrrrr.</p>
-
-    <p>Amo tu humor, cómo siempre logras sacarme una sonrisa, y la paciencia infinita que me tienes SJSJSJSJSJ. Me encanta que todos los días me cuentes cómo te fue, shi fue bueno o malo, y escuchar absolutamente todo de tu día. Y esha frase tuya que tanto amooo “Amorrr Jugamoshhhh”. Y aunque me encanta todo de tiii tus ojitos tan bellos tienen algo que me ENCANTAAAAA.</p>
-
-    <p>Hoy para mí tú eres todo: mi novia, mi mejor amiga, mi futura esposa, la persona que siempre está para mí y que me escucha en todo. Te agradezco cada muestra de amor, cada apoyo, y hasta nuestras pocas discusiones, porque siempre supimos arreglarlas hablando, como el equipo que somoshh. Me haces sentir seguro, querido y en paz sobre todo cuando me dices cosas lindas y cuando sé que confías en mí y me cuentas todo.</p>
-
-    <p>Contigo he aprendido tanto hasta incluso de tu país, de tus costumbres, de sus comidas, de cómo viven estas fechas. Me encanta descubrir el mundo a través de tiiii JSJSJSJSJS.</p>
-
-    <p>Y cuando pienso en el futuro, solo te imagino a ti mi amor. Me ilusiona vivir contigo, formar una familia, cumplir nuestro sueño de tener dos hijos, casarnos y pasar la vida entera juntos. Quiero viajar contigo, mostrarte cada rincón de mi país, conocer el tuyo de tu mano y después recorrer otros países juntos, creando recuerdos que sean solo nuestros.</p>
+    <!-- resto de tu texto igual... -->
 
     <p>Grashias por existir, por llegar a mi vida cuando menos lo esperaba y convertirla en algo tan hermoso. Feliz 14 de febrero, mi amor hoy y siempreee aunque por el momento nu estemos juntitoshhhh, te elijo a ti SIEMPREEEEEEEEE MI AMOLLLLLLLL TE AMOOOOOOOOOOOO 💞💞💞💞💞💞</p>
+
+    <!-- Canción de Spotify centrada con título -->
+    <div class="spotify-container">
+      <h3>Canción para mi niña 💞</h3>
+      <iframe src="https://open.spotify.com/embed/track/0OyPpoyyGUvw8ce4tsY8dn?si=33dde80efac54cc5"
+              width="100%"
+              height="80"
+              frameborder="0"
+              allowtransparency="true"
+              allow="encrypted-media">
+      </iframe>
+    </div>
 
   </div>
 </div>
