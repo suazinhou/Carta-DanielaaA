@@ -48,9 +48,14 @@ body{
 .input-display{
   font-size:28px;
   letter-spacing:10px;
-  margin-top:20px;
+  margin-top:10px;
   font-family:'Segoe UI',sans-serif;
   color:var(--accent);
+  border:2px solid var(--accent);
+  border-radius:12px;
+  padding:10px 15px;
+  display:inline-block;
+  min-width:50px;
 }
 #passwordMessage {
   font-family: 'Segoe UI', 'Segoe Script', cursive;
@@ -187,8 +192,6 @@ h3{ text-align:center; margin-top:-10px; }
   margin-bottom: 10px;
   font-size: 18px;
 }
-
-/* Botón del contador estilo teclas */
 #btnCarta{
   margin-top:20px;
   border:none;
@@ -233,8 +236,21 @@ h3{ text-align:center; margin-top:-10px; }
 <div id="contadorScreen" class="screen">
   <div class="carta">
     <h1>💞 Tiempo que llevamos juntos 💞</h1>
-    <div class="input-display" id="contadorDias">0 años 0 meses 0 días</div>
-    <button id="btnCarta" onclick="abrirCarta()">Ver nuestra carta 💌</button>
+    <div style="display:flex; justify-content:center; gap:30px; margin-top:20px;">
+      <div style="text-align:center;">
+        <div class="input-display" id="años">0</div>
+        <div>Años</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="input-display" id="meses">0</div>
+        <div>Meses</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="input-display" id="dias">0</div>
+        <div>Días</div>
+      </div>
+    </div>
+    <button id="btnCarta" onclick="abrirCarta()">14 de Febrero 💞</button>
   </div>
 </div>
 
@@ -256,7 +272,7 @@ h3{ text-align:center; margin-top:-10px; }
       </div>
       <div class="flecha flecha-right" onclick="moverCarrusel(1)">&#10095;</div>
     </div>
-    <!-- Texto romántico completo -->
+    <!-- Texto romántico -->
     <p><strong>MI AMOSHITAAA,</strong></p>
     <p>Este es nuestro primer 14 de febrero, nu solo como Novios, shi nu también conociéndonos, Antes de conocerte me sentía bastante solito, sin ganas de conocer a alguien, nu estaba mal ni nada simplemente nadie me llamaba la atención, y en medio de todo esho, Llegaste tú para cambiarlo todoooo. Desde que entraste en mi vida volví a sentir cosas hermosas, volví a ilusionarme con querer algo con una persona, y todo empezó a verse mucho máshh bonito contigo a mi laditooo.</p>
     <p>Has cambiado mi vida de tantas maneras que a veces nushee ni cómo explicarlo: Ahora soy másh atento aunque a veces nu she pueda notar tantoo JSJSJSJS, me siento  muyyyyy seguroo contigo, me enseñaste a quererme muchisimo máshhhh, hiciste que mis ojitos volvieran a brillar 🥺🥺 y eso es algo que jamás voy a dejar de agradecerte mi niñaaa. El simple hecho de hablar contigo, que me contaras tu día, tus cosas, tu forma de ser, y lo increíblemente preciosa que ereshhh, fue suficiente para que me diera cuenta de cuánto me gustabas y de cuánto te sigo eligiendo todos los días y para siempreeee.</p>
@@ -296,14 +312,16 @@ function check(){
 
 // Contador con años, meses y días
 function actualizarContador(){
-  const inicio = new Date(2025,8,21); // Septiembre = 8
+  const inicio = new Date(2025,8,21);
   const hoy = new Date();
   let años = hoy.getFullYear() - inicio.getFullYear();
   let meses = hoy.getMonth() - inicio.getMonth();
   let dias = hoy.getDate() - inicio.getDate();
   if(dias<0){ meses--; dias+=new Date(hoy.getFullYear(),hoy.getMonth(),0).getDate(); }
   if(meses<0){ años--; meses+=12; }
-  document.getElementById('contadorDias').textContent = `${años} años ${meses} meses ${dias} días`;
+  document.getElementById('años').textContent = años;
+  document.getElementById('meses').textContent = meses;
+  document.getElementById('dias').textContent = dias;
 }
 
 // Ir a carta
@@ -313,44 +331,8 @@ function abrirCarta(){
 }
 
 // Corazones flotando
-function createHeart(){
-  const heart=document.createElement("div");
-  heart.className="heart";
-  heart.innerHTML="💞";
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.animationDuration=(Math.random()*3+4)+"s";
-  heart.style.fontSize=(Math.random()*20+15)+"px";
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),7000);
+function create
 }
-setInterval(createHeart,400);
-
-// Confetti
-function createConfetti(){
-  for(let i=0;i<30;i++){
-    const confetti = document.createElement('div');
-    confetti.className='confetti';
-    confetti.style.left=Math.random()*100+'vw';
-    confetti.style.backgroundColor = `hsl(${Math.random()*360},70%,70%)`;
-    confetti.style.width = confetti.style.height = (Math.random()*8 +7) +'px';
-    confetti.style.animationDuration = (Math.random()*2+3)+'s';
-    document.body.appendChild(confetti);
-    setTimeout(()=> confetti.remove(),4000);
-  }
-}
-
-// Carrusel
-let posicion = 0;
-function moverCarrusel(direccion){
-  const carrusel = document.getElementById('carrusel');
-  const containerWidth = carrusel.parentElement.offsetWidth;
-  const fotoWidth = carrusel.querySelector('.foto-container').offsetWidth + 10;
-  const maxPos = carrusel.scrollWidth - containerWidth;
-  posicion += direccion * fotoWidth;
-  posicion = Math.max(0, Math.min(posicion, maxPos));
-  carrusel.style.transform = `translateX(-${posicion}px)`;
-}
-
 // Modal fotos
 document.querySelectorAll('.foto-container img').forEach(img=>{
   img.addEventListener('click', ()=>{
