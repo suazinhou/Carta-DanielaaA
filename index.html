@@ -9,7 +9,6 @@
   --bg:#ffe6f0;
   --accent:#ff2e7a;
 }
-
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
@@ -17,7 +16,6 @@ body{
   text-align:center;
   overflow-x:hidden;
 }
-
 .screen{
   display:none;
   justify-content:center;
@@ -26,18 +24,13 @@ body{
   flex-direction:column;
   padding:20px;
 }
-
-.active{
-  display:flex;
-}
-
+.active{ display:flex; }
 .keypad{
   display:grid;
   grid-template-columns:repeat(3,70px);
   gap:12px;
   margin-top:20px;
 }
-
 .key{
   border:none;
   background:white;
@@ -48,18 +41,17 @@ body{
   box-shadow:0 4px 10px rgba(0,0,0,0.1);
   transition:0.2s;
 }
-
 .key:hover{
   background:#ffd1e6;
   transform:scale(1.05);
 }
-
 .input-display{
   font-size:28px;
   letter-spacing:10px;
   margin-top:20px;
+  font-family:'Segoe UI',sans-serif;
+  color:var(--accent);
 }
-
 #passwordMessage {
   font-family: 'Segoe UI', 'Segoe Script', cursive;
   font-size: 16px;
@@ -69,7 +61,6 @@ body{
   font-style: italic;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
-
 .carta{
   background:white;
   width:90%;
@@ -79,38 +70,26 @@ body{
   box-shadow:0 10px 30px rgba(0,0,0,0.2);
   text-align:left;
 }
-
-h1{
-  color:var(--accent);
-  text-align:center;
-}
-
-h3{
-  text-align:center;
-  margin-top:-10px;
-}
-
+h1{ color:var(--accent); text-align:center; }
+h3{ text-align:center; margin-top:-10px; }
 .carrusel-container {
   position: relative;
   width: 100%;
   overflow: hidden;
   margin: 20px 0;
 }
-
 .carrusel {
   display: flex;
   gap: 10px;
   transition: transform 0.4s ease;
 }
-
 .carrusel .foto-container {
-  min-width: 200px; 
+  min-width: 200px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .carrusel img {
   width: 200px;
   height: 150px;
@@ -120,11 +99,7 @@ h3{
   cursor: pointer;
   transition: transform 0.3s;
 }
-
-.carrusel img:hover {
-  transform: scale(1.05);
-}
-
+.carrusel img:hover { transform: scale(1.05); }
 .caption {
   font-family: 'Segoe UI', 'Segoe Script', cursive;
   font-size: 16px;
@@ -135,12 +110,7 @@ h3{
   text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   transition: transform 0.3s, color 0.3s;
 }
-
-.caption:hover {
-  transform: scale(1.05);
-  color: #ff2e7a;
-}
-
+.caption:hover { transform: scale(1.05); color: #ff2e7a; }
 .flecha {
   position: absolute;
   top: 50%;
@@ -158,15 +128,9 @@ h3{
   user-select: none;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
-
-.flecha:hover {
-  background: var(--accent);
-  color: white;
-}
-
+.flecha:hover { background: var(--accent); color: white; }
 .flecha-left { left: 5px; }
 .flecha-right { right: 5px; }
-
 .heart{
   position:fixed;
   bottom:-20px;
@@ -175,80 +139,70 @@ h3{
   opacity:0.8;
   pointer-events:none;
 }
-
 @keyframes floatUp{
-  from{
-    transform:translateY(0) rotate(0deg);
-    opacity:0.8;
-  }
-  to{
-    transform:translateY(-110vh) rotate(360deg);
-    opacity:0;
-  }
+  from{ transform:translateY(0) rotate(0deg); opacity:0.8; }
+  to{ transform:translateY(-110vh) rotate(360deg); opacity:0; }
 }
-
-/* --- Confetti --- */
 .confetti {
   position: fixed;
   width: 10px;
   height: 10px;
-  background-color: #ff2e7a;
-  opacity: 0.9;
+  border-radius: 50%;
   pointer-events: none;
   z-index: 999;
-  border-radius: 50%;
   animation: confettiFall linear forwards;
 }
-
 @keyframes confettiFall {
   0% { transform: translateY(0) rotate(0deg); opacity: 1; }
   100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
-
-/* --- Animación de entrada del texto --- */
 .carta p, .carta h1, .carta h3 {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.6s forwards;
 }
-
-.carta p {
-  animation-delay: 0.3s;
-}
-
-.carta p:nth-of-type(2) { animation-delay: 0.6s; }
-.carta p:nth-of-type(3) { animation-delay: 0.9s; }
-.carta p:nth-of-type(4) { animation-delay: 1.2s; }
-.carta p:nth-of-type(5) { animation-delay: 1.5s; }
-.carta p:nth-of-type(6) { animation-delay: 1.8s; }
-.carta p:nth-of-type(7) { animation-delay: 2.1s; }
-.carta p:nth-of-type(8) { animation-delay: 2.4s; }
-.carta p:nth-of-type(9) { animation-delay: 2.7s; }
-.carta p:nth-of-type(10) { animation-delay: 3s; }
-.carta p:nth-of-type(11) { animation-delay: 3.3s; }
-.carta p:nth-of-type(12) { animation-delay: 3.6s; }
-.carta p:nth-of-type(13) { animation-delay: 3.9s; }
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* --- Spotify centrado --- */
+.carta p:nth-of-type(1) { animation-delay:0.3s; }
+.carta p:nth-of-type(2) { animation-delay:0.6s; }
+.carta p:nth-of-type(3) { animation-delay:0.9s; }
+.carta p:nth-of-type(4) { animation-delay:1.2s; }
+.carta p:nth-of-type(5) { animation-delay:1.5s; }
+.carta p:nth-of-type(6) { animation-delay:1.8s; }
+.carta p:nth-of-type(7) { animation-delay:2.1s; }
+.carta p:nth-of-type(8) { animation-delay:2.4s; }
+.carta p:nth-of-type(9) { animation-delay:2.7s; }
+.carta p:nth-of-type(10) { animation-delay:3s; }
+.carta p:nth-of-type(11) { animation-delay:3.3s; }
+.carta p:nth-of-type(12) { animation-delay:3.6s; }
+.carta p:nth-of-type(13) { animation-delay:3.9s; }
+@keyframes fadeInUp { to{ opacity:1; transform:translateY(0); } }
 .spotify-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 20px 0;
 }
-
 .spotify-container h3 {
   color: #ff2e7a;
   font-family: 'Segoe UI', 'Segoe Script', cursive;
   margin-bottom: 10px;
   font-size: 18px;
+}
+
+/* Botón del contador estilo teclas */
+#btnCarta{
+  margin-top:20px;
+  border:none;
+  background:white;
+  font-size:20px;
+  padding:15px 30px;
+  border-radius:15px;
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  transition:0.2s;
+}
+#btnCarta:hover{
+  background:#ffd1e6;
+  transform:scale(1.05);
 }
 </style>
 </head>
@@ -258,11 +212,7 @@ h3{
 <div id="passwordScreen" class="screen active">
   <h2>Ingresa la contraseña 💞</h2>
   <div class="input-display" id="display">••••</div>
-  
-  <p id="passwordMessage">
-    Pista: La Contraseña tiene que ver con el Día y Mes que nos pusimos de Novios 🥺💞
-  </p>
-  
+  <p id="passwordMessage">Pista: La Contraseña tiene que ver con el Día y Mes que nos pusimos de Novios 🥺💞</p>
   <div class="keypad">
     <button class="key" onclick="add('1')">1</button>
     <button class="key" onclick="add('2')">2</button>
@@ -279,41 +229,33 @@ h3{
   </div>
 </div>
 
-<!-- Carta y carrusel -->
+<!-- Pantalla del contador -->
+<div id="contadorScreen" class="screen">
+  <div class="carta">
+    <h1>💞 Tiempo que llevamos juntos 💞</h1>
+    <div class="input-display" id="contadorDias">0 años 0 meses 0 días</div>
+    <button id="btnCarta" onclick="abrirCarta()">Ver nuestra carta 💌</button>
+  </div>
+</div>
+
+<!-- Carta romántica -->
 <div id="cartaScreen" class="screen">
   <div class="carta">
     <h1>FELIZ 14 DE FEBRERO MI NIÑA 💞</h1>
     <h3>14 de Febrero 2026</h3>
-
-    <!-- Carrusel de recuerdos -->
+    <!-- Carrusel de fotos -->
     <div class="carrusel-container">
       <div class="flecha flecha-left" onclick="moverCarrusel(-1)">&#10094;</div>
       <div class="carrusel" id="carrusel">
-        <div class="foto-container">
-          <img src="foto1.jpg.png" alt="Recuerdo 1">
-          <p class="caption">Nuestra primer Fotito Jjsjssjjs</p>
-        </div>
-        <div class="foto-container">
-          <img src="foto2.jpg.png" alt="Recuerdo 2">
-        </div>
-        <div class="foto-container">
-          <img src="foto3.jpg.png" alt="Recuerdo 3">
-        </div>
-        <div class="foto-container">
-          <img src="foto4.jpg.png" alt="Recuerdo 4">
-        </div>
-        <div class="foto-container">
-          <img src="foto5.jpg.png" alt="Recuerdo 5">
-          <p class="caption">Foto que tomé porque me pareció tierno</p>
-        </div>
-        <div class="foto-container">
-          <img src="foto6.jpg.png" alt="Recuerdo 6">
-          <p class="caption">Foto Favorita &lt;3</p>
-        </div>
+        <div class="foto-container"><img src="foto1.jpg.png"><p class="caption">Nuestra primer Fotito Jjsjssjjs</p></div>
+        <div class="foto-container"><img src="foto2.jpg.png"></div>
+        <div class="foto-container"><img src="foto3.jpg.png"></div>
+        <div class="foto-container"><img src="foto4.jpg.png"></div>
+        <div class="foto-container"><img src="foto5.jpg.png"><p class="caption">Foto que tomé porque me pareció tierno</p></div>
+        <div class="foto-container"><img src="foto6.jpg.png"><p class="caption">Foto Favorita &lt;3</p></div>
       </div>
       <div class="flecha flecha-right" onclick="moverCarrusel(1)">&#10095;</div>
     </div>
-
     <!-- Texto romántico completo -->
     <p><strong>MI AMOSHITAAA,</strong></p>
     <p>Este es nuestro primer 14 de febrero, nu solo como Novios, shi nu también conociéndonos, Antes de conocerte me sentía bastante solito, sin ganas de conocer a alguien, nu estaba mal ni nada simplemente nadie me llamaba la atención, y en medio de todo esho, Llegaste tú para cambiarlo todoooo. Desde que entraste en mi vida volví a sentir cosas hermosas, volví a ilusionarme con querer algo con una persona, y todo empezó a verse mucho máshh bonito contigo a mi laditooo.</p>
@@ -324,8 +266,6 @@ h3{
     <p>Contigo he aprendido tantoo hasta incluso de tu país, de tus costumbres, de sus comidas, de cómo viven estas todas las fechass. Me encanta descubrir el mundo a través de tiiii JSJSJSJSJS.</p>
     <p>Y cuando pienso en el futuro, solo te imagino a ti mi amor. Me ilusiona vivir contigo, Formar una familia, Cumplir nuestro sueño de tener dos hijos, casarnos y pasar la vida entera juntos. Quiero viajar contigo, mostrarte cada rincón de mi país, conocer el tuyo de tu mano y después recorrer otros países juntos, creando recuerdos que sean solo nuestros mi chiquitaaa.</p>
     <p>Por último, GRASHIAS por existir, por llegar a mi vida de la manera másh inesperada y cuando menosh me lo esperaba y convertirla en algo tan hermosho. Feliz 14 de febrero Mi Amor, Aunque por el momento nu podemosh estar juntitoshhhh, Créeme que yio te elijo a ti SIEMPREEEEEEEEE MI AMOLLLLLLLL TE AMOOOOOOOOOOOO 💞💞💞💞💞💞</p>
-
-    <!-- Canción de Spotify -->
     <div class="spotify-container">
       <h3>Canción para mi niña 💞</h3>
       <iframe src="https://open.spotify.com/embed/track/0OyPpoyyGUvw8ce4tsY8dn?si=33dde80efac54cc5"
@@ -345,12 +285,31 @@ function update(){ document.getElementById("display").textContent=input.padEnd(4
 function check(){
   if(input===correct){
     document.getElementById("passwordScreen").classList.remove("active");
-    document.getElementById("cartaScreen").classList.add("active");
+    document.getElementById("contadorScreen").classList.add("active");
     createConfetti();
+    actualizarContador();
   }else{
     alert("Contraseña incorrecta 💔");
     input=""; update();
   }
+}
+
+// Contador con años, meses y días
+function actualizarContador(){
+  const inicio = new Date(2025,8,21); // Septiembre = 8
+  const hoy = new Date();
+  let años = hoy.getFullYear() - inicio.getFullYear();
+  let meses = hoy.getMonth() - inicio.getMonth();
+  let dias = hoy.getDate() - inicio.getDate();
+  if(dias<0){ meses--; dias+=new Date(hoy.getFullYear(),hoy.getMonth(),0).getDate(); }
+  if(meses<0){ años--; meses+=12; }
+  document.getElementById('contadorDias').textContent = `${años} años ${meses} meses ${dias} días`;
+}
+
+// Ir a carta
+function abrirCarta(){
+  document.getElementById("contadorScreen").classList.remove("active");
+  document.getElementById("cartaScreen").classList.add("active");
 }
 
 // Corazones flotando
@@ -370,17 +329,29 @@ setInterval(createHeart,400);
 function createConfetti(){
   for(let i=0;i<30;i++){
     const confetti = document.createElement('div');
-    confetti.className = 'confetti';
-    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.className='confetti';
+    confetti.style.left=Math.random()*100+'vw';
     confetti.style.backgroundColor = `hsl(${Math.random()*360},70%,70%)`;
-    confetti.style.animationDuration = (Math.random()*2 + 3) + 's';
-    confetti.style.width = confetti.style.height = (Math.random()*8 + 7) + 'px';
+    confetti.style.width = confetti.style.height = (Math.random()*8 +7) +'px';
+    confetti.style.animationDuration = (Math.random()*2+3)+'s';
     document.body.appendChild(confetti);
     setTimeout(()=> confetti.remove(),4000);
   }
 }
 
-// Modal para agrandar fotos
+// Carrusel
+let posicion = 0;
+function moverCarrusel(direccion){
+  const carrusel = document.getElementById('carrusel');
+  const containerWidth = carrusel.parentElement.offsetWidth;
+  const fotoWidth = carrusel.querySelector('.foto-container').offsetWidth + 10;
+  const maxPos = carrusel.scrollWidth - containerWidth;
+  posicion += direccion * fotoWidth;
+  posicion = Math.max(0, Math.min(posicion, maxPos));
+  carrusel.style.transform = `translateX(-${posicion}px)`;
+}
+
+// Modal fotos
 document.querySelectorAll('.foto-container img').forEach(img=>{
   img.addEventListener('click', ()=>{
     const modal = document.createElement('div');
@@ -396,19 +367,6 @@ document.querySelectorAll('.foto-container img').forEach(img=>{
     modal.addEventListener('click', ()=> modal.remove());
   });
 });
-
-// Carrusel
-let posicion = 0;
-function moverCarrusel(direccion){
-  const carrusel = document.getElementById('carrusel');
-  const containerWidth = carrusel.parentElement.offsetWidth;
-  const fotoWidth = carrusel.querySelector('.foto-container').offsetWidth + 10; // gap
-  const maxPos = carrusel.scrollWidth - containerWidth;
-
-  posicion += direccion * fotoWidth;
-  posicion = Math.max(0, Math.min(posicion, maxPos));
-  carrusel.style.transform = `translateX(-${posicion}px)`;
-}
 </script>
 </body>
 </html>
