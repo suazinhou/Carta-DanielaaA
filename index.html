@@ -61,7 +61,20 @@ body{
   padding:10px 15px;
   display:inline-block;
   min-width:50px;
+  text-align:center;
 }
+.input-display-emoji{
+  font-size:28px;
+  border:2px solid var(--accent);
+  border-radius:12px;
+  padding:10px 15px;
+  display:inline-block;
+  min-width:50px;
+  text-align:center;
+  background:white;
+}
+
+/* Mensaje de contraseña */
 #passwordMessage {
   font-family: 'Segoe UI', 'Segoe Script', cursive;
   font-size: 16px;
@@ -108,11 +121,9 @@ h3{ text-align:center; margin-top:-10px; }
 #btnCarta, #btnFechas{ margin-top:20px; border:none; background:white; font-size:24px; padding:20px 40px; border-radius:15px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.2s; margin-right:10px;}
 #btnCarta:hover, #btnFechas:hover{ background:#ffd1e6; transform:scale(1.05); }
 
-/* Estilo etiquetas contador y fechas */
-.etiqueta{ margin-top:8px; font-size:16px; color:var(--accent); font-weight:bold; }
+/* Contador y fechas */
 .contador-item, .fecha-item{ display:flex; flex-direction:column; align-items:center; margin-bottom:15px; }
-
-/* Contenedor de fechas especiales */
+.etiqueta{ margin-top:8px; font-size:16px; color:var(--accent); font-weight:bold; }
 .fechas-container{ display:flex; flex-direction:column; align-items:center; margin-top:20px; gap:15px; }
 .fechas-flex{ display:flex; align-items:center; gap:10px; justify-content:center; }
 </style>
@@ -146,15 +157,15 @@ h3{ text-align:center; margin-top:-10px; }
     <h1>💞 Tiempo que llevamos juntos 💞</h1>
     <div class="contador-container">
       <div class="contador-item">
-        <div class="contador-num" id="años">0</div>
+        <div class="input-display" id="años">0</div>
         <div class="etiqueta">Años</div>
       </div>
       <div class="contador-item">
-        <div class="contador-num" id="meses">0</div>
+        <div class="input-display" id="meses">0</div>
         <div class="etiqueta">Meses</div>
       </div>
       <div class="contador-item">
-        <div class="contador-num" id="dias">0</div>
+        <div class="input-display" id="dias">0</div>
         <div class="etiqueta">Días</div>
       </div>
     </div>
@@ -169,22 +180,21 @@ h3{ text-align:center; margin-top:-10px; }
 <div id="fechasScreen" class="screen">
   <div class="carta">
     <h1>🎉 Fechas Especiales 🎉</h1>
-
-    <!-- Fechas de meses y aniversario -->
     <div class="fechas-container">
-      <div class="fechas-flex"><div class="emoji-num">💞</div><div class="fecha-num">21</div><div class="etiqueta">Septiembre 2025 - Primer Día de Novios</div></div>
-      <div class="fechas-flex"><div class="emoji-num">💞</div><div class="fecha-num">21</div><div class="etiqueta">Octubre 2025 - Primer Mes de Novios</div></div>
-      <div class="fechas-flex"><div class="emoji-num">💞</div><div class="fecha-num">21</div><div class="etiqueta">Noviembre 2025 - Segundo Mes de Novios</div></div>
-      <div class="fechas-flex"><div class="emoji-num">💞</div><div class="fecha-num">21</div><div class="etiqueta">Diciembre 2025 - Tercer Mes de Novios</div></div>
-      <div class="fechas-flex"><div class="emoji-num">💞</div><div class="fecha-num">21</div><div class="etiqueta">Enero 2026 - Cuarto Mes de Novios</div></div>
-      <div class="fechas-flex"><div class="emoji-num">⏳</div><div class="fecha-num">21</div><div class="etiqueta">Febrero 2026 - Quinto Mes de Novios</div></div>
+      <!-- Meses -->
+      <div class="fechas-flex"><div class="input-display input-display-emoji">💞</div><div class="input-display">21</div><div class="etiqueta">Septiembre 2025 - Primer Día de Novios</div></div>
+      <div class="fechas-flex"><div class="input-display input-display-emoji">💞</div><div class="input-display">21</div><div class="etiqueta">Octubre 2025 - Primer Mes de Novios</div></div>
+      <div class="fechas-flex"><div class="input-display input-display-emoji">💞</div><div class="input-display">21</div><div class="etiqueta">Noviembre 2025 - Segundo Mes de Novios</div></div>
+      <div class="fechas-flex"><div class="input-display input-display-emoji">💞</div><div class="input-display">21</div><div class="etiqueta">Diciembre 2025 - Tercer Mes de Novios</div></div>
+      <div class="fechas-flex"><div class="input-display input-display-emoji">💞</div><div class="input-display">21</div><div class="etiqueta">Enero 2026 - Cuarto Mes de Novios</div></div>
+      <div class="fechas-flex"><div class="input-display input-display-emoji">⏳</div><div class="input-display">21</div><div class="etiqueta">Febrero 2026 - Quinto Mes de Novios</div></div>
     </div>
 
     <!-- Cumpleaños -->
     <h2 style="margin-top:30px;">🎂 Cumpleaños 🎂</h2>
     <div class="fechas-container">
-      <div class="fechas-flex"><div class="emoji-num">🎂</div><div class="fecha-num">07</div><div class="etiqueta">Octubre - Daniela 💞</div></div>
-      <div class="fechas-flex"><div class="emoji-num">🎂</div><div class="fecha-num">07</div><div class="etiqueta">Marzo - Dylan 💞</div></div>
+      <div class="fechas-flex"><div class="input-display input-display-emoji">🎂</div><div class="input-display">07</div><div class="etiqueta">Octubre - Daniela 💞</div></div>
+      <div class="fechas-flex"><div class="input-display input-display-emoji">🎂</div><div class="input-display">07</div><div class="etiqueta">Marzo - Dylan 💞</div></div>
     </div>
 
     <button id="btnCarta" onclick="abrirCarta()" style="margin-top:30px;">14 de Febrero 💞</button>
